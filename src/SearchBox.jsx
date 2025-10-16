@@ -8,7 +8,7 @@ export default function SearchBox({ updateInfo }) {
   let [error, setError] = useState(false);
 
   const API_URL = "https://api.openweathermap.org/data/2.5/weather";
-  const API_KEY = "6f4438d1ab7d43bc2d6bcffc8f55eaf0";
+  const API_KEY = import.meta.env.VITE_API_KEY; // Use API key from .env
 
   let getWeatherInfo = async () => {
     try {
@@ -16,6 +16,12 @@ export default function SearchBox({ updateInfo }) {
         `${API_URL}?q=${city}&appid=${API_KEY}&units=metric`
       );
       let jsonResponse = await response.json();
+
+      // Handle case when city is not found
+      if (jsonResponse.cod !== 200) {
+        throw new Error(jsonResponse.message);
+      }
+
       let result = {
         city: city,
         temp: jsonResponse.main.temp,
@@ -25,10 +31,10 @@ export default function SearchBox({ updateInfo }) {
         feelsLike: jsonResponse.main.feels_like,
         weather: jsonResponse.weather[0].description,
       };
+
       console.log(result);
       return result;
     } catch (err) {
-      // setError("No such place in our API");
       throw err;
     }
   };
@@ -40,10 +46,10 @@ export default function SearchBox({ updateInfo }) {
   let handleSubmit = async (evt) => {
     try {
       evt.preventDefault();
-      console.log(city);
       let newInfo = await getWeatherInfo();
       updateInfo(newInfo);
       setCity("");
+      setError(false); // Reset error on successful fetch
     } catch (err) {
       setError(true);
     }
