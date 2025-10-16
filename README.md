@@ -51,8 +51,7 @@ Follow these steps to run the project locally:
    - Visit `http://localhost:5173/` in your browser.
 
 ## 📸 Preview
-_Add a screenshot or demo GIF here once available._
-
+![Screenshot](path/to/image.png)
 ## 💡 Future Enhancements
 - 7-day weather forecast  
 - User location-based weather detection  
