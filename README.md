@@ -2,6 +2,9 @@
 
 A simple and elegant weather app that provides **real-time weather updates**, **temperature**, and **conditions** for any city around the world.
 
+## 📸 Preview
+![Screenshot](src/assets/screenshot.png)
+
 ## 🚀 Features
 - 🌍 Search weather by city name  
 - 🌡️ Displays current temperature, humidity, and weather conditions  
@@ -50,8 +53,6 @@ Follow these steps to run the project locally:
 7. **Open the app**
    - Visit `http://localhost:5173/` in your browser.
 
-## 📸 Preview
-![Screenshot](path/to/image.png)
 ## 💡 Future Enhancements
 - 7-day weather forecast  
 - User location-based weather detection  
